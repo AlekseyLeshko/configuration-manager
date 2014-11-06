@@ -19,15 +19,14 @@
   "bugs": {
     "url": "https://github.com/AlekseyLeshko/configuration-manager/issues"
   },
-  "dependencies": {},
+  "dependencies": {
+    "nomnom": "^1.8.0"
+  },
   "engines": {
     "node": "*"
   },
   "preferGlobal": "true",
   "directories": {
     "bin": "./bin"
-  },
-  "dependencies": {
-    "optimist": "^0.6.1"
   }
 }
