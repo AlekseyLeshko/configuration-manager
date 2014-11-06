@@ -26,5 +26,8 @@
   "preferGlobal": "true",
   "directories": {
     "bin": "./bin"
+  },
+  "dependencies": {
+    "optimist": "^0.6.1"
   }
 }
