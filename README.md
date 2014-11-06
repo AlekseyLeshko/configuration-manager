@@ -1,0 +1,4 @@
+configuration-manager
+=====================
+
+Configuration manager
