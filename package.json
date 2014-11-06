@@ -2,7 +2,7 @@
   "name": "configuration-manager",
   "version": "0.0.0",
   "description": "Configuration manager",
-  "main": "index.js",
+  "main": "./src/configuration-manager.js",
   "homepage": "https://github.com/AlekseyLeshko/configuration-manager",
   "author": "Aleksey Leshko (https://github.com/AlekseyLeshko)",
   "contributors": [
