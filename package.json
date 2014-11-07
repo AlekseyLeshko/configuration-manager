@@ -28,5 +28,8 @@
   "preferGlobal": "true",
   "directories": {
     "bin": "./bin"
+  },
+  "devDependencies": {
+    "jasmine": "^2.0.1"
   }
 }
