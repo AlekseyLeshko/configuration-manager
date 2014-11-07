@@ -1,9 +1,8 @@
-var fs = require('fs');
-var mkdirp = require('mkdirp');
-var defaultConfig = require('./defaultConfig');
-
 (function() {
   'use strict';
+  var fs = require('fs');
+  var mkdirp = require('mkdirp');
+  var defaultConfig = require('./defaultConfig');
 
   var Config = function() {
     this.init();
@@ -24,6 +23,7 @@ var defaultConfig = require('./defaultConfig');
       }
 
       this.create();
+      console.log('create default config file');
     },
 
     isExist: function() {

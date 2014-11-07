@@ -6,19 +6,19 @@ var ConfigurationManager = require('./configuration-manager');
 
   function main() {
     var cManager = new ConfigurationManager();
-    var methods = {
-      major: cManager.major,
-      minor: cManager.minor
-    };
 
-    parser.command('version-update')
-      .callback(handle)
-      .help('run version update major');
+    parser.command('init')
+      .callback(initHandle)
+      .help('run init');
 
     parser.command('version-update-major')
       .callback(handleMajor)
       .help('run version update --type=major');
     parser.parse();
+
+    function initHandle(opts) {
+      cManager.init();
+    }
 
     function handleMajor(opts) {
       cManager.major();
