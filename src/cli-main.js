@@ -21,7 +21,7 @@ var ConfigurationManager = require('./configuration-manager');
     }
 
     function handleMajor(opts) {
-      cManager.major();
+      cManager.incMajor();
     }
 
     function handle(opts) {
