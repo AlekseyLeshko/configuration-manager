@@ -28,11 +28,11 @@
 
     getConfigHandle: function(er, data) {
       if (er) {
-        console.error('There was an error reading the file')
-        return
+        console.error('There was an error reading the file');
+        return;
       }
 
-      console.error('the package data is', data)
+      console.error('the package data is', data);
     },
 
     setConfig: function(newConfig) {
