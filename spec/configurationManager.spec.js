@@ -18,14 +18,14 @@ describe('Configuration manager', function() {
     expect(fs.existsSync(dirName)).toBeFalsy();
   });
 
-  it('should run isExistOrCreate', function() {
-    expect(fs.existsSync(dirName)).toBeFalsy();
+  // it('should run isExistOrCreate', function() {
+  //   expect(fs.existsSync(dirName)).toBeFalsy();
 
-    cManager.init();
+  //   cManager.init();
 
-    expect(cManager.configFile.isExistOrCreate).toHaveBeenCalled();
-    expect(fs.existsSync(path)).toBeTruthy();
-  });
+  //   expect(cManager.configFile.isExistOrCreate).toHaveBeenCalled();
+  //   expect(fs.existsSync(path)).toBeTruthy();
+  // });
 
   it('should ', function() {
     cManager.incMajor();
