@@ -1,8 +1,8 @@
 (function() {
   'use strict';
+
   var readJson = require('read-package-json');
   var ConfigFile = require('./config')
-
 
   var ConfigurationManager = function() {
     this.name = 'ConfigurationManager';

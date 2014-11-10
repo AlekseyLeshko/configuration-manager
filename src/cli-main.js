@@ -1,8 +1,8 @@
-var parser = require('nomnom');
-var ConfigurationManager = require('./configuration-manager');
-
 (function() {
   'use strict';
+
+  var parser = require('nomnom');
+  var ConfigurationManager = require('./configuration-manager');
 
   function main() {
     var cManager = new ConfigurationManager();
