@@ -1,5 +1,6 @@
 (function() {
   'use strict';
+
   var fs = require('fs');
   var mkdirp = require('mkdirp');
   var defaultConfig = require('./defaultConfig');
