@@ -2,8 +2,8 @@
   'use strict';
 
   var fs = require('fs');
-  var mkdirp = require('mkdirp');
   var defaultConfig = require('./defaultConfig');
+  var Q = require('q');
 
   var Config = function() {
     this.init();
@@ -28,21 +28,25 @@
     },
 
     isExist: function() {
+      var deferred = Q.defer();
       if (!fs.existsSync(this.config.dirName)) {
-        return false;
+        deferred.resolve(false);
       }
-
       if (!fs.existsSync(this.getPath())) {
-        return false;
+        deferred.resolve(false);
       }
-      return true;
+      deferred.resolve(true);
+
+      return deferred.promise;
     },
 
     create: function() {
-      mkdirp(this.config.dirName);
+      var deferred = Q.defer();
+      fs.mkdir(this.config.dirName, deferred.makeNodeResolver());
 
       var json = JSON.stringify(defaultConfig, null, 2);
-      fs.writeFile(this.getPath(), json);
+      fs.writeFile(this.getPath(), json, deferred.makeNodeResolver());
+      return deferred.promise;
     },
 
     getPath: function() {
