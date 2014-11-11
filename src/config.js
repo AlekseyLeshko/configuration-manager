@@ -18,13 +18,13 @@
     },
 
     isExistOrCreate: function() {
-      if (this.isExist()) {
-        console.log('Config file is exist in this module');
-        return;
-      }
-
-      this.create();
-      console.log('create default config file');
+      this.isExist()
+        .then(function(value) {
+          this.create();
+          console.log('create default config file');
+        }, function() {
+          console.log('Config file is exist in this module');
+        });
     },
 
     isExist: function() {
