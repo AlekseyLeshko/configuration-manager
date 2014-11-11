@@ -9,7 +9,7 @@
     "Aleksey Leshko <alekseyleshko@gmail.com>"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jasmine"
   },
   "repository": {
     "type": "git",
@@ -20,8 +20,8 @@
     "url": "https://github.com/AlekseyLeshko/configuration-manager/issues"
   },
   "dependencies": {
-    "mkdirp": "^0.5.0",
     "nomnom": "^1.8.0",
+    "q": "^1.1.1",
     "read-package-json": "^1.2.7"
   },
   "engines": {
@@ -32,6 +32,7 @@
     "bin": "./bin"
   },
   "devDependencies": {
-    "jasmine": "^2.0.1"
+    "jasmine": "^2.0.1",
+    "shelljs": "^0.3.0"
   }
 }

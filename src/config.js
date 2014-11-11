@@ -2,8 +2,8 @@
   'use strict';
 
   var fs = require('fs');
-  var mkdirp = require('mkdirp');
   var defaultConfig = require('./defaultConfig');
+  var Q = require('q');
 
   var Config = function() {
     this.init();
@@ -28,10 +28,6 @@
     },
 
     isExist: function() {
-      if (!fs.existsSync(this.config.dirName)) {
-        return false;
-      }
-
       if (!fs.existsSync(this.getPath())) {
         return false;
       }
@@ -39,7 +35,9 @@
     },
 
     create: function() {
-      mkdirp(this.config.dirName);
+      if (!fs.existsSync(this.config.dirName)) {
+        fs.mkdir(this.config.dirName);
+      }
 
       var json = JSON.stringify(defaultConfig, null, 2);
       fs.writeFile(this.getPath(), json);
