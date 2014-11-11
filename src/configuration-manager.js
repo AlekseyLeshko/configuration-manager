@@ -2,6 +2,7 @@
   'use strict';
 
   var readJson = require('read-package-json');
+  var updateGitignore = require('./updateGitignore');
   var ConfigFile = require('./config');
 
   var ConfigurationManager = function() {
@@ -16,6 +17,7 @@
   ConfigurationManager.prototype = {
     init: function() {
       this.configFile.isExistOrCreate();
+      updateGitignore();
     },
 
     getConfig: function() {
