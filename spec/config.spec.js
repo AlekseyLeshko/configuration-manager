@@ -10,7 +10,9 @@ describe('Config', function() {
 
   afterEach(function() {
     sh.rm('-rf', config.config.dirName);
-    expect(fs.existsSync(config.config.dirName)).toBeFalsy();
+    fs.exists(config.config.dirName, function (exists) {
+      expect(exists).toBeFalsy();
+    });
   });
 
   it('should init make default config', function() {
@@ -24,18 +26,25 @@ describe('Config', function() {
     expect(path).toEqual(expected);
   });
 
-  // it('should create folder with config json', function() {
-  //   expect(fs.existsSync(config.config.dirName)).toBeFalsy();
+  it('should create folder with config json', function() {
+    fs.exists(config.config.dirName, function (exists) {
+      expect(exists).toBeFalsy();
+    });
 
-  //   config.create();
+    config.create();
 
-  //   expect(fs.existsSync(config.config.dirName)).toBeTruthy();
-  //   expect(fs.existsSync(config.getPath())).toBeTruthy();
-  // });
+    fs.exists(config.config.dirName, function (exists) {
+      expect(exists).toBeTruthy();
+    });
+    fs.exists(config.getPath(), function (exists) {
+      expect(exists).toBeTruthy();
+    });
+  });
 
   it('should isExist without folder return false', function() {
-    expect(fs.existsSync(config.config.dirName)).toBeFalsy();
-
+    fs.exists(config.config.dirName, function (exists) {
+      expect(exists).toBeFalsy();
+    });
     var res = config.isExist();
 
     expect(res).toBeFalsy();
@@ -43,19 +52,23 @@ describe('Config', function() {
 
   it('should isExist without json file return false', function() {
     mkdirp(config.config.dirName);
-    expect(fs.existsSync(config.config.fileName)).toBeFalsy();
+    fs.exists(config.config.fileName, function (exists) {
+      expect(exists).toBeFalsy();
+    });
 
     var res = config.isExist();
 
     expect(res).toBeFalsy();
   });
 
-  // it('should isExist return true', function() {
-  //   config.create();
-  //   expect(fs.existsSync(config.config.fileName)).toBeFalsy();
+  it('should isExist return true', function() {
+    config.create();
+    fs.exists(config.config.fileName, function (exists) {
+      expect(exists).toBeFalsy();
+    });
 
-  //   var res = config.isExist();
+    var res = config.isExist();
 
-  //   expect(res).toBeTruthy();
-  // });
+    expect(res).toBeTruthy();
+  });
 });

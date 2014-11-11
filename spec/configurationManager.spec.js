@@ -15,17 +15,22 @@ describe('Configuration manager', function() {
 
   afterEach(function() {
     sh.rm('-rf', dirName);
-    expect(fs.existsSync(dirName)).toBeFalsy();
+    fs.exists(dirName, function (exists) {
+      expect(exists).toBeFalsy();
+    });
   });
 
-  // it('should run isExistOrCreate', function() {
-  //   expect(fs.existsSync(dirName)).toBeFalsy();
+  it('should run isExistOrCreate', function() {
+    fs.exists(dirName, function (exists) {
+      expect(exists).toBeFalsy();
+    });
+    cManager.init();
 
-  //   cManager.init();
-
-  //   expect(cManager.configFile.isExistOrCreate).toHaveBeenCalled();
-  //   expect(fs.existsSync(path)).toBeTruthy();
-  // });
+    expect(cManager.configFile.isExistOrCreate).toHaveBeenCalled();
+    fs.exists(path, function (exists) {
+      expect(exists).toBeTruthy();
+    });
+  });
 
   it('should ', function() {
     cManager.incMajor();
