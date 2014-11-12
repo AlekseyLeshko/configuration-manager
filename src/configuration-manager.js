@@ -21,32 +21,11 @@
     },
 
     getConfig: function() {
-      var filePath = 'package.json';
-
-      readJson(filePath, getConfigHandle);
-      var obj = {};
-      return obj;
-    },
-
-    getConfigHandle: function(er, data) {
-      if (er) {
-        console.error('There was an error reading the file');
-        return;
-      }
-
-      console.error('the package data is', data);
+      return this.configFile.get();
     },
 
     setConfig: function(newConfig) {
-
-    },
-
-    updateConfig: function(newConfig) {
-
-    },
-
-    extendConfig: function(newConfig) {
-
+      return this.configFile.set(newConfig);
     },
 
     updateVersion: function(newVersion, type) {
