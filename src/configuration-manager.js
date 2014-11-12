@@ -4,6 +4,7 @@
   var readJson = require('read-package-json');
   var updateGitignore = require('./updateGitignore');
   var ConfigFile = require('./config');
+  var semver = require('semver');
 
   var ConfigurationManager = function() {
     this.name = 'ConfigurationManager';
@@ -28,20 +29,48 @@
       return this.configFile.set(newConfig);
     },
 
-    updateVersion: function(newVersion, type) {
+    getVersion: function() {
+      var configObj = this.getConfig();
+      var version = semver.valid(configObj.version);
+      if (version === null) {
+        console.log('Version in config file is invalid.');
+        return;
+      }
 
+      return version;
+    },
+
+    setVersion: function(version) {
+      var newVersion = semver.valid(version);
+      if (newVersion === null) {
+        console.log('New version is invalid.');
+        return;
+      }
+      var configObj = this.getConfig();
+      configObj.version = newVersion;
+      setConfig(configObj);
+    },
+
+    incVersion: function(type) {
+      var version = this.getVersion();
+      type = type || 'patch';
+      version = semver.inc(version, type);
+      this.setVersion(version);
     },
 
     incMajor: function() {
-      console.log('function major');
+      var type = 'major';
+      this.incVersion(type);
     },
 
     incMminor: function() {
-      console.log('function minor');
+      var type = 'minor';
+      this.incVersion(type);
     },
 
     incPatch: function() {
-      console.log('function patch');
+      var type = 'patch';
+      this.incVersion(type);
     }
   };
 
