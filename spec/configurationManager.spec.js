@@ -63,6 +63,5 @@ describe('Configuration manager', function() {
     var obj = cManager.setConfig();
 
     expect(cManager.configFile.set).toHaveBeenCalled();
-    // expect(obj).toEqual(expected);
   });
 });
