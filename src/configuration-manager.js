@@ -25,7 +25,7 @@
     },
 
     setConfig: function(newConfig) {
-
+      return this.configFile.set(newConfig);
     },
 
     updateConfig: function(newConfig) {
