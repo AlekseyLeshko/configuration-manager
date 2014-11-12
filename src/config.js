@@ -56,7 +56,6 @@
 
     set: function(obj) {
       var json = JSON.stringify(obj, null, 2);
-      console.log(json);
       fs.writeFile(this.getPath(), json);
     }
   };
