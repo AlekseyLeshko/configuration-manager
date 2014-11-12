@@ -3,6 +3,7 @@
 
   function getDefaultConfig() {
     var config = {
+      version: '0.0.0',
       a: 1,
       b: 2,
       c: 3
