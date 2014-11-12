@@ -34,4 +34,20 @@ describe('Configuration manager', function() {
 
     expect(true).toBe(true);
   });
+
+  it('should getConfig', function() {
+    var expected = {
+      a: 1,
+      b: 2
+    };
+    cManager.configFile.get = function() {
+      return expected;
+    }
+    spyOn(cManager.configFile, 'get').and.callThrough();
+
+    var obj = cManager.getConfig();
+
+    expect(cManager.configFile.get).toHaveBeenCalled();
+    expect(obj).toEqual(expected);
+  });
 });

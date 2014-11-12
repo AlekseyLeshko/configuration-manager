@@ -46,6 +46,12 @@
     getPath: function() {
       var path = this.config.dirName + this.config.fileName;
       return path;
+    },
+
+    get: function() {
+      var data = fs.readFileSync(this.getPath(), 'utf8');
+      var obj = JSON.parse(data);
+      return obj;
     }
   };
 
