@@ -28,14 +28,6 @@
       return this.configFile.set(newConfig);
     },
 
-    updateConfig: function(newConfig) {
-
-    },
-
-    extendConfig: function(newConfig) {
-
-    },
-
     updateVersion: function(newVersion, type) {
 
     },
