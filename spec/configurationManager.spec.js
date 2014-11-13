@@ -63,56 +63,17 @@ describe('Configuration manager', function() {
   });
 
   describe('methods with version', function() {
-    var version;
-
-    beforeEach(function() {
-      cManager.setVersion = function(newVersion) {
-        version = newVersion;
+    it('should getVersion', function() {
+      cManager.version.get = function() {
+        var v = '0.0.0';
+        return v;
       };
+      spyOn(cManager.version, 'get').and.callThrough();
+      var expected = '0.0.0'
 
-      cManager.getConfig = function() {
-        var config = {
-          version: '0.0.0'
-        };
-        return config;
-      };
-      spyOn(cManager, 'getConfig').and.callThrough();
-      spyOn(cManager, 'setVersion').and.callThrough();
-    });
+      var version = cManager.getVersion();
 
-    it('should getVersion without type', function() {
-      var expected = '0.0.1'
-
-      cManager.incVersion();
-
-      expect(cManager.getConfig).toHaveBeenCalled();
-      expect(version).toEqual(expected);
-    });
-
-    it('should incPatch', function() {
-      var expected = '0.0.1'
-
-      cManager.incPatch();
-
-      expect(cManager.getConfig).toHaveBeenCalled();
-      expect(version).toEqual(expected);
-    });
-
-    it('should incMminor', function() {
-      var expected = '0.1.0'
-
-      cManager.incMminor();
-
-      expect(cManager.getConfig).toHaveBeenCalled();
-      expect(version).toEqual(expected);
-    });
-
-    it('should incMajor', function() {
-      var expected = '1.0.0'
-
-      cManager.incMajor();
-
-      expect(cManager.getConfig).toHaveBeenCalled();
+      expect(cManager.version.get).toHaveBeenCalled();
       expect(version).toEqual(expected);
     });
   });
