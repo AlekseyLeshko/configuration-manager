@@ -105,5 +105,19 @@ describe('Configuration manager', function() {
       expect(cManager.version.incVersion).toHaveBeenCalled();
       expect(type).toEqual(expected);
     });
+
+    it('should incPatch', function() {
+      var expected = 'patch';
+      var type;
+      cManager.version.incVersion = function(newType) {
+        type = newType;
+      };
+      spyOn(cManager.version, 'incVersion').and.callThrough();
+
+      cManager.incPatch();
+
+      expect(cManager.version.incVersion).toHaveBeenCalled();
+      expect(type).toEqual(expected);
+    });
   });
 });
