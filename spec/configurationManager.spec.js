@@ -76,5 +76,20 @@ describe('Configuration manager', function() {
       expect(cManager.version.get).toHaveBeenCalled();
       expect(version).toEqual(expected);
     });
+
+    it('should setVersion', function() {
+      var version;
+      cManager.version.set = function(newVersion) {
+        version = newVersion;
+      };
+      spyOn(cManager.version, 'set').and.callThrough();
+      var expected = '0.0.1'
+      var value = '0.0.1';
+
+      cManager.setVersion(value);
+
+      expect(cManager.version.set).toHaveBeenCalled();
+      expect(version).toEqual(expected);
+    });
   });
 });
