@@ -124,6 +124,15 @@ describe('Configuration manager', function() {
         expect(cManager.version.incVersion).toHaveBeenCalled();
         expect(type).toEqual(expected);
       });
+
+      it('should incMinor', function() {
+        var expected = 'minor';
+
+        cManager.incMminor();
+
+        expect(cManager.version.incVersion).toHaveBeenCalled();
+        expect(type).toEqual(expected);
+      });
     });
   });
 });
