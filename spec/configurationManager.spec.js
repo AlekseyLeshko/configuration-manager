@@ -133,6 +133,15 @@ describe('Configuration manager', function() {
         expect(cManager.version.incVersion).toHaveBeenCalled();
         expect(type).toEqual(expected);
       });
+
+      it('should incMajor', function() {
+        var expected = 'major';
+
+        cManager.incMajor();
+
+        expect(cManager.version.incVersion).toHaveBeenCalled();
+        expect(type).toEqual(expected);
+      });
     });
   });
 });
