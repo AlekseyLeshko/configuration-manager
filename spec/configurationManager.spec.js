@@ -11,18 +11,12 @@ describe('Configuration manager', function() {
     var dirName = 'config/';
     var path = 'config/config.json';
 
-    afterEach(function() {
-      sh.rm('-rf', dirName);
-      fs.exists(dirName, function (exists) {
-        expect(exists).toBeFalsy();
-      });
-    });
-
     it('should run isExistOrCreate', function() {
       spyOn(cManager.configFile, 'isExistOrCreate').and.callThrough();
       fs.exists(dirName, function (exists) {
         expect(exists).toBeFalsy();
       });
+
       cManager.init();
 
       expect(cManager.configFile.isExistOrCreate).toHaveBeenCalled();
