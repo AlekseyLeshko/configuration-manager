@@ -41,7 +41,7 @@
     },
 
     incVersion: function(type) {
-      this.version.incVersion(type);
+      this.version.inc(type);
     },
 
     incMajor: function() {

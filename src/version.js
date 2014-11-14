@@ -31,7 +31,7 @@
       this.configFile.set(configObj);
     },
 
-    incVersion: function(type) {
+    inc: function(type) {
       var version = this.get();
       type = type || 'patch';
       version = semver.inc(version, type);
