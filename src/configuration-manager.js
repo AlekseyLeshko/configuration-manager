@@ -3,14 +3,15 @@
 
   var readJson = require('read-package-json');
   var semver = require('semver');
-  var updateGitignore = require('./updateGitignore');
   var ConfigFile = require('./config');
   var Version = require('./version');
+  var Gitignore = require('./gitignore');
 
   var ConfigurationManager = function() {
     this.name = 'ConfigurationManager';
     this.configFile = new ConfigFile();
     this.version = new Version();
+    this.gitignore = new Gitignore();
 
     this.config = {
       baseDir: './'
@@ -20,7 +21,7 @@
   ConfigurationManager.prototype = {
     init: function() {
       this.configFile.isExistOrCreate();
-      updateGitignore();
+      this.gitignore.update();
     },
 
     getConfig: function() {
