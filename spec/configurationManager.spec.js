@@ -12,14 +12,21 @@ describe('Configuration manager', function() {
     var path = 'config/config.json';
 
     it('should run isExistOrCreate', function() {
-      spyOn(cManager.configFile, 'isExistOrCreate').and.callThrough();
       fs.exists(dirName, function (exists) {
         expect(exists).toBeFalsy();
       });
+      cManager.configFile.isExistOrCreate = function() {
+      };
+      cManager.gitignore.update = function() {
+      };
+      spyOn(cManager.configFile, 'isExistOrCreate').and.callThrough();
+      spyOn(cManager.gitignore, 'update').and.callThrough();
 
       cManager.init();
 
+      expect(cManager.gitignore.update).toHaveBeenCalled();
       expect(cManager.configFile.isExistOrCreate).toHaveBeenCalled();
+
       fs.exists(path, function (exists) {
         expect(exists).toBeTruthy();
       });
