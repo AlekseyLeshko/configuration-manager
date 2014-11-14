@@ -26,4 +26,36 @@ describe('version', function() {
     expect(version.configFile.get).toHaveBeenCalled();
     expect(res).toEqual(expected);
   });
+
+  it('should inc', function() {
+    version.get = function() {
+      return '0.0.0';
+    };
+    var res;
+    version.set = function(newVersion) {
+      res = newVersion;
+    };
+
+    var expected = '0.0.1'
+
+    version.inc();
+
+    expect(res).toEqual(expected);
+  });
+
+  it('should inc with type', function() {
+    version.get = function() {
+      return '0.0.0';
+    };
+    var res;
+    version.set = function(newVersion) {
+      res = newVersion;
+    };
+    var type = 'minor';
+    var expected = '0.1.0'
+
+    version.inc(type);
+
+    expect(res).toEqual(expected);
+  });
 });
