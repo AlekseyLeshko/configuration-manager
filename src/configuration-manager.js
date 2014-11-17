@@ -2,12 +2,16 @@
   'use strict';
 
   var readJson = require('read-package-json');
-  var updateGitignore = require('./updateGitignore');
+  var semver = require('semver');
   var ConfigFile = require('./config');
+  var Version = require('./version');
+  var Gitignore = require('./gitignore');
 
   var ConfigurationManager = function() {
     this.name = 'ConfigurationManager';
     this.configFile = new ConfigFile();
+    this.version = new Version();
+    this.gitignore = new Gitignore();
 
     this.config = {
       baseDir: './'
@@ -17,7 +21,7 @@
   ConfigurationManager.prototype = {
     init: function() {
       this.configFile.isExistOrCreate();
-      updateGitignore();
+      this.gitignore.update();
     },
 
     getConfig: function() {
@@ -25,23 +29,34 @@
     },
 
     setConfig: function(newConfig) {
-      return this.configFile.set(newConfig);
+      this.configFile.set(newConfig);
     },
 
-    updateVersion: function(newVersion, type) {
+    getVersion: function() {
+      return this.version.get();
+    },
 
+    setVersion: function(version) {
+      this.version.set(version);
+    },
+
+    incVersion: function(type) {
+      this.version.inc(type);
     },
 
     incMajor: function() {
-      console.log('function major');
+      var type = 'major';
+      this.incVersion(type);
     },
 
     incMminor: function() {
-      console.log('function minor');
+      var type = 'minor';
+      this.incVersion(type);
     },
 
     incPatch: function() {
-      console.log('function patch');
+      var type = 'patch';
+      this.incVersion(type);
     }
   };
 
