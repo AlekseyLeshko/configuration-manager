@@ -22,7 +22,8 @@
   "dependencies": {
     "nomnom": "^1.8.0",
     "q": "^1.1.1",
-    "read-package-json": "^1.2.7"
+    "read-package-json": "^1.2.7",
+    "semver": "^4.1.0"
   },
   "engines": {
     "node": "*"

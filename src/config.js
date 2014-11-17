@@ -13,7 +13,7 @@
     init: function() {
       this.config = {
         dirName: 'config/',
-        fileName: 'config.json'
+        fileName: 'config-manager.json'
       };
     },
 
@@ -56,7 +56,6 @@
 
     set: function(obj) {
       var json = JSON.stringify(obj, null, 2);
-      console.log(json);
       fs.writeFile(this.getPath(), json);
     }
   };
