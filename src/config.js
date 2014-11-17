@@ -13,7 +13,7 @@
     init: function() {
       this.config = {
         dirName: 'config/',
-        fileName: 'config.json'
+        fileName: 'config-manager.json'
       };
     },
 
