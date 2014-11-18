@@ -39,4 +39,18 @@ describe('Config', function() {
     var path = config.getPath();
     expect(path).toEqual(expected);
   });
+
+  it('should create', function() {
+    config.craeteDir = function() {
+    };
+    config.save = function() {
+    };
+    spyOn(config, 'craeteDir').and.callThrough();
+    spyOn(config, 'save').and.callThrough();
+
+    config.create();
+
+    expect(config.craeteDir).toHaveBeenCalled();
+    expect(config.save).toHaveBeenCalled();
+  });
 });
