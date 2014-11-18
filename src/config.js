@@ -8,7 +8,7 @@
 
   var Config = function() {
     this.init();
-    this.load();
+    this.isExistOrCreate();
   };
 
   Config.prototype = {
