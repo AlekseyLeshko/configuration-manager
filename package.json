@@ -9,7 +9,7 @@
     "Aleksey Leshko <alekseyleshko@gmail.com>"
   ],
   "scripts": {
-    "test": "mocha -u tdd"
+    "test": "jasmine"
   },
   "repository": {
     "type": "git",
@@ -20,6 +20,7 @@
     "url": "https://github.com/AlekseyLeshko/configuration-manager/issues"
   },
   "dependencies": {
+    "jasmine": "^2.1.0",
     "mem-fs": "^1.0.0",
     "mem-fs-editor": "^1.0.0",
     "nomnom": "^1.8.0",
