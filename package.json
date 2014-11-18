@@ -9,7 +9,7 @@
     "Aleksey Leshko <alekseyleshko@gmail.com>"
   ],
   "scripts": {
-    "test": "jasmine"
+    "test": "mocha -u tdd"
   },
   "repository": {
     "type": "git",
