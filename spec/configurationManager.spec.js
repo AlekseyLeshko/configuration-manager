@@ -11,7 +11,7 @@ describe('Configuration manager', function() {
     var dirName = 'config/';
     var path = 'config/config.json';
 
-    it('should run isExistOrCreate', function() {
+    it('should run isExistOrCreate', function(done) {
       fs.exists(dirName, function (exists) {
         expect(exists).toBeFalsy();
       });
@@ -28,7 +28,8 @@ describe('Configuration manager', function() {
       expect(cManager.configFile.isExistOrCreate).toHaveBeenCalled();
 
       fs.exists(path, function (exists) {
-        expect(exists).toBeTruthy();
+        expect(exists).toBeFalsy();
+        done();
       });
     });
 
