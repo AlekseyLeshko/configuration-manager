@@ -20,7 +20,6 @@ describe('Config', function() {
       spyOn(Config.prototype, 'init').and.callThrough();
       spyOn(Config.prototype, 'load').and.callThrough();
 
-
       var config = new Config();
 
       expect(Config.prototype.init).toHaveBeenCalled();
