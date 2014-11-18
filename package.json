@@ -20,10 +20,13 @@
     "url": "https://github.com/AlekseyLeshko/configuration-manager/issues"
   },
   "dependencies": {
+    "mem-fs": "^1.0.0",
+    "mem-fs-editor": "^1.0.0",
     "nomnom": "^1.8.0",
     "q": "^1.1.1",
     "read-package-json": "^1.2.7",
-    "semver": "^4.1.0"
+    "semver": "^4.1.0",
+    "shelljs": "^0.3.0"
   },
   "engines": {
     "node": "*"
@@ -32,8 +35,5 @@
   "directories": {
     "bin": "./bin"
   },
-  "devDependencies": {
-    "jasmine": "^2.0.1",
-    "shelljs": "^0.3.0"
-  }
+  "devDependencies": {}
 }
