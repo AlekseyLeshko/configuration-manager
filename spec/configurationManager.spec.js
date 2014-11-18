@@ -94,20 +94,6 @@ describe('Configuration manager', function() {
       expect(version).toEqual(expected);
     });
 
-    it('should incVersion', function() {
-      var expected = 'patch';
-      var type;
-      cManager.version.inc = function(newType) {
-        type = newType;
-      };
-      spyOn(cManager.version, 'inc').and.callThrough();
-
-      cManager.incVersion(expected);
-
-      expect(cManager.version.inc).toHaveBeenCalled();
-      expect(type).toEqual(expected);
-    });
-
     describe('methods base on incVersion', function() {
       var type;
 
@@ -116,6 +102,15 @@ describe('Configuration manager', function() {
           type = newType;
         };
         spyOn(cManager.version, 'inc').and.callThrough();
+      });
+
+      it('should incVersion', function() {
+        var expected = 'patch';
+
+        cManager.incVersion(expected);
+
+        expect(cManager.version.inc).toHaveBeenCalled();
+        expect(type).toEqual(expected);
       });
 
       it('should incPatch', function() {
