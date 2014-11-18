@@ -36,5 +36,9 @@
   "directories": {
     "bin": "./bin"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "gulp": "^3.8.10",
+    "gulp-coverage": "^0.3.31",
+    "gulp-jasmine": "^1.0.1"
+  }
 }
