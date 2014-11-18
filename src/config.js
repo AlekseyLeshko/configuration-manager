@@ -28,8 +28,9 @@
     },
 
     save: function() {
-      var json = JSON.stringify(obj, null, 2);
+      var json = JSON.stringify(defaultConfig, null, 2);
       fs.writeFile(this.getPath(), json);
+      this.fs.write(this.getPath(), json);
     },
 
     isExistOrCreate: function() {
@@ -51,12 +52,7 @@
 
     create: function() {
       this.craeteDir();
-
-      // console.log(defaultConfig);
-      var json = JSON.stringify(defaultConfig, null, 2);
-      // console.log(json);
-      fs.writeFile(this.getPath(), json);
-      this.fs.write(this.getPath(), json);
+      this.save();
     },
 
     craeteDir: function() {
