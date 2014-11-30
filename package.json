@@ -20,7 +20,6 @@
     "url": "https://github.com/AlekseyLeshko/configuration-manager/issues"
   },
   "dependencies": {
-    "jasmine": "^2.1.0",
     "mem-fs": "^1.0.0",
     "mem-fs-editor": "^1.0.0",
     "nomnom": "^1.8.0",
@@ -39,6 +38,7 @@
   "devDependencies": {
     "gulp": "^3.8.10",
     "gulp-coverage": "^0.3.31",
-    "gulp-jasmine": "^1.0.1"
+    "gulp-jasmine": "^1.0.1",
+    "jasmine": "^2.1.0"
   }
 }
