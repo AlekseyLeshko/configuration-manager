@@ -3,3 +3,7 @@ node_modules/
 
 #module
 config/
+.coverdata/
+debug/
+.coverrun
+coverage.html

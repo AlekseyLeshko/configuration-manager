@@ -11,7 +11,7 @@ describe('Configuration manager', function() {
     var dirName = 'config/';
     var path = 'config/config.json';
 
-    it('should run isExistOrCreate', function() {
+    it('should run isExistOrCreate', function(done) {
       fs.exists(dirName, function (exists) {
         expect(exists).toBeFalsy();
       });
@@ -28,7 +28,8 @@ describe('Configuration manager', function() {
       expect(cManager.configFile.isExistOrCreate).toHaveBeenCalled();
 
       fs.exists(path, function (exists) {
-        expect(exists).toBeTruthy();
+        expect(exists).toBeFalsy();
+        done();
       });
     });
 
@@ -93,28 +94,23 @@ describe('Configuration manager', function() {
       expect(version).toEqual(expected);
     });
 
-    it('should incVersion', function() {
-      var expected = 'patch';
-      var type;
-      cManager.version.incVersion = function(newType) {
-        type = newType;
-      };
-      spyOn(cManager.version, 'incVersion').and.callThrough();
-
-      cManager.incVersion(expected);
-
-      expect(cManager.version.incVersion).toHaveBeenCalled();
-      expect(type).toEqual(expected);
-    });
-
     describe('methods base on incVersion', function() {
       var type;
 
       beforeEach(function() {
-        cManager.version.incVersion = function(newType) {
+        cManager.version.inc = function(newType) {
           type = newType;
         };
-        spyOn(cManager.version, 'incVersion').and.callThrough();
+        spyOn(cManager.version, 'inc').and.callThrough();
+      });
+
+      it('should incVersion', function() {
+        var expected = 'patch';
+
+        cManager.incVersion(expected);
+
+        expect(cManager.version.inc).toHaveBeenCalled();
+        expect(type).toEqual(expected);
       });
 
       it('should incPatch', function() {
@@ -122,7 +118,7 @@ describe('Configuration manager', function() {
 
         cManager.incPatch();
 
-        expect(cManager.version.incVersion).toHaveBeenCalled();
+        expect(cManager.version.inc).toHaveBeenCalled();
         expect(type).toEqual(expected);
       });
 
@@ -131,7 +127,7 @@ describe('Configuration manager', function() {
 
         cManager.incMminor();
 
-        expect(cManager.version.incVersion).toHaveBeenCalled();
+        expect(cManager.version.inc).toHaveBeenCalled();
         expect(type).toEqual(expected);
       });
 
@@ -140,7 +136,7 @@ describe('Configuration manager', function() {
 
         cManager.incMajor();
 
-        expect(cManager.version.incVersion).toHaveBeenCalled();
+        expect(cManager.version.inc).toHaveBeenCalled();
         expect(type).toEqual(expected);
       });
     });
