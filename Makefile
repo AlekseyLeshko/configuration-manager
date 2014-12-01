@@ -19,9 +19,12 @@ install_global_module: install_say_me
 test:
 	gulp test
 
-build: local_install
+build: global_install
 
-local_install:
+global_remove:
+	npm remove -g say-me
+
+global_install: global_remove
 	npm install -g ./
 
 clean:
