@@ -33,7 +33,9 @@
   },
   "preferGlobal": "true",
   "directories": {
-    "bin": "./bin"
+    "lib": "./scr",
+    "bin": "./bin",
+    "test": "./spec"
   },
   "devDependencies": {
     "gulp": "^3.8.10",
