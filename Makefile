@@ -17,7 +17,7 @@ install_global_module: install_say_me
 	@echo "gulp is installed"
 
 test:
-	npm test
+	gulp test
 
 build: local_install
 
